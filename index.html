@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bengkel Mahaputra Makassar - Toko Ban & Bengkel Servis Mobil Terpercaya. Rating 4.9/5.0 dari 3,600+ Review. Ganti Oli, Servis Ringan, dan Ban Lengkap.">
+    <title>Bengkel Mahaputra - Toko Ban & Servis Terbaik Makassar</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #DC2626; /* Automotive Red */
+            --primary-dark: #B91C1C;
+            --secondary: #1F2937; /* Asphalt Dark Gray */
+            --secondary-light: #374151;
+            --accent: #F3F4F6; /* Metallic Silver */
+            --text-dark: #111827;
+            --text-light: #F9FAFB;
+            --success: #16A34A;
+            --warning: #CA8A04;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--accent);
+            line-height: 1.6;
+            padding-bottom: 70px; /* Space for mobile sticky nav */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .text-primary { color: var(--primary); }
+        .text-center { text-align: center; }
+        .hidden { display: none; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-heading);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--text-dark);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .logo span { color: var(--primary); }
+
+        .desktop-nav { display: none; }
+        
+        @media(min-width: 768px) {
+            .desktop-nav { display: block; }
+            .header-cta { display: block; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(31, 41, 55, 0.85), rgba(31, 41, 55, 0.7)), 
+                        url('https://images.unsplash.com/photo-1595180126767-73b378037386?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-proof {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stars { color: #FBBF24; font-size: 1.5rem; }
+        .rating-text { font-weight: 700; font-size: 1.5rem; margin: 0 10px; }
+        .review-count { display: block; font-size: 0.875rem; opacity: 0.8; margin-top: 5px; }
+
+        /* --- OPERATIONAL STATUS WIDGET --- */
+        .status-bar {
+            background-color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .status-open .status-dot {
+            background-color: var(--success);
+            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        .status-closed .status-dot {
+            background-color: var(--secondary-light);
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+        }
+
+        /* --- SERVICES GRID --- */
+        .services {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media(min-width: 768px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        /* --- LOCATION & CONTACT --- */
+        .location-section {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media(min-width: 900px) {
+            .location-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+        }
+
+        .address-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .info-text strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: var(--font-heading);
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 350px;
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111827;
+            color: #9CA3AF;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE STICKY NAV --- */
+        .mobile-sticky-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .sticky-btn {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sticky-wa {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .sticky-map {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        @media(min-width: 768px) {
+            .mobile-sticky-nav { display: none; }
+            body { padding-bottom: 0; }
+        }
+
+        /* Utility specific for the big rating number */
+        .big-rating {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#">
+                    <h1>BENGKEL <span>MAHAPUTRA</span></h1>
+                </a>
+            </div>
+            <a href="tel:081524222887" class="btn btn-primary header-cta hidden mobile:hidden">
+                <i class="fa-solid fa-phone"></i> Hubungi Kami
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>BENGKEL BAN & SERVIS<br>TERBAIK DI MAKASSAR</h1>
+            <p>Solusi otomotif terpercaya untuk mobil kesayangan Anda. Pusat ganti ban, oli, dan servis rutin dengan pelayanan cepat dan jujur.</p>
+            
+            <div class="social-proof">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <span class="big-rating">4.9</span>
+                    <div style="text-align: left; margin-left: 10px;">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span style="font-size: 0.8rem; font-weight: 300;">3,616 Ulasan Google</span>
+                    </div>
+                </div>
+                <div style="margin-top: 10px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 8px;">
+                    "Pelayanan sangat memuaskan, mekanik handal!"
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <a href="#location" class="btn btn-primary">Lihat Lokasi Bengkel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Status Widget -->
+    <div class="status-bar">
+        <div class="container">
+            <div id="shopStatus" class="status-indicator">
+                <!-- Javascript will inject content here -->
+                <span class="status-dot"></span> Memuat status operasional...
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">LAYANAN KAMI</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-car-burst"></i> <!-- Using car-burst as generic wheel/impact proxy or fa-circle-notch -->
+                        <!-- Better wheel icon proxy -->
+                        <i class="fa-solid fa-bullseye" style="display:none"></i> 
+                    </div>
+                    <h3>Spesialis Ban</h3>
+                    <p>Koleksi ban terlengkap berbagai merek dengan harga kompetitif. Termasuk jasa bongkar pasang, balancing, dan nitrogen.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-oil-can"></i>
+                    </div>
+                    <h3>Ganti Oli</h3>
+                    <p>Oli original dijamin asli. Melindungi mesin kendaraan Anda agar performa tetap maksimal dan awet.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3>Servis Cepat</h3>
+                    <p>Servis rutin dan perbaikan ringan ditangani oleh mekanik berpengalaman. Jujur, transparan, dan tanpa menunggu lama.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="address-card">
+                    <h3>KUNJUNGI KAMI</h3>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="info-text">
+                            <strong>Alamat</strong>
+                            Jl. Bandang No.33, Bontoala Tua, Kec. Bontoala, Kota Makassar, Sulawesi Selatan 90156
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div class="info-text">
+                            <strong>Jam Operasional</strong>
+                            Senin - Sabtu: 08:00 - 17:00 WITA<br>
+                            Minggu: Tutup
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div class="info-text">
+                            <strong>Kontak</strong>
+                            <a href="https://wa.me/6281524222887" style="text-decoration: underline;">0815-2422-2887</a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <a href="tel:081524222887" class="btn btn-primary" style="background: white; color: var(--primary);">Telepon Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.834063857508!2d119.4187!3d-5.1299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDcnNDcuNiJTIDExOcKwMjUnMDcuMyJF!5e0!3m2!1sen!2sid!4v1634567890123!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Lokasi Bengkel Mahaputra">
+                    </iframe>
+                    <!-- Note: Since I don't have the exact CID from the prompt to generate the perfect Embed, I used generic coordinates for the general area of Jl Bandang. In production, use the Place ID for Bengkel Mahaputra. -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Bengkel Mahaputra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Navigation -->
+    <div class="mobile-sticky-nav">
+        <a href="https://wa.me/6281524222887?text=Halo%20Bengkel%20Mahaputra,%20saya%20mau%20tanya%20tentang..." class="sticky-btn sticky-wa">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Hubungi WA
+        </a>
+        <a href="https://www.google.com/maps/dir//Bengkel+Mahaputra,+Jl.+Bandang+No.33,+Bontoala+Tua,+Kec.+Bontoala,+Kota+Makassar,+Sulawesi+Selatan+90156" target="_blank" class="sticky-btn sticky-map">
+            <i class="fa-solid fa-location-arrow"></i> Petunjuk Arah
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            checkShopStatus();
+            
+            // Re-check status every minute in case user leaves tab open
+            setInterval(checkShopStatus, 60000);
+        });
+
+        function checkShopStatus() {
+            const statusElement = document.getElementById('shopStatus');
+            const now = new Date();
+            
+            // Get Day (0 = Sunday, 1 = Monday, etc.)
+            const day = now.getDay();
+            
+            // Get Hour (0-23)
+            const hour = now.getHours();
+
+            // Logic: Open Mon(1) - Sat(6), 08:00 to 17:00
+            const isOpenDay = day >= 1 && day <= 6;
+            const isOpenHour = hour >= 8 && hour < 17;
+
+            if (isOpenDay && isOpenHour) {
+                // SHOP IS OPEN
+                statusElement.className = 'status-indicator status-open';
+                statusElement.innerHTML = `
+                    <span class="status-dot"></span>
+                    <span style="color: var(--success);">BENGKEL BUKA</span>
+                    <span style="font-weight: 400; font-size: 0.9rem; margin-left: 10px; color: #666;"> - Siap Melayani Anda</span>
+                `;
+            } else {
+                // SHOP IS CLOSED
+                statusElement.className = 'status-indicator status-closed';
+                
+                // Determine logic for "Opens at..."
+                let nextOpenText = "";
+                if (day === 0) {
+                    nextOpenText = "Buka Senin jam 08:00";
+                } else if (hour >= 17) {
+                    // It's evening, opens tomorrow unless tomorrow is Sunday
+                    nextOpenText = (day === 6) ? "Buka Senin jam 08:00" : "Buka Besok jam 08:00";
+                } else {
+                    // It's morning before 8
+                    nextOpenText = "Buka jam 08:00 Pagi ini";
+                }
+
+                statusElement.innerHTML = `
+                    <span class="status-dot"></span>
+                    <span style="color: var(--secondary-light);">BENGKEL TUTUP</span>
+                    <span style="font-weight: 400; font-size: 0.9rem; margin-left: 10px; color: #666;"> - ${nextOpenText}</span>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
